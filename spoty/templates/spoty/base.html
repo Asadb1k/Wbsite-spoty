@@ -1,0 +1,125 @@
+{% load cats %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Music Website</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/stile.css" %}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+
+    <div class="sidebar">
+      <div class="logo">
+        <a href="{% url "home" %}">
+          {% comment %} <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png" alt="Logo" /> {% endcomment %}
+          <img src="{% static "images/milliy-music.png" %}" alt="Logo" />
+        </a>
+      </div>
+
+      <div class="navigation">
+        <ul>
+          <li>
+            <a href="{% url "home" %}">
+              <span class="fa fa-home"></span>
+              <span>Home</span>
+            </a>
+          </li>
+
+          {% comment %} <li>
+            <a href="#">
+              <span class="fa fa-search"></span>
+              <span>Search</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="fa fas fa-book"></span>
+              <span>Your Library</span>
+            </a>
+          </li>
+        </ul> {% endcomment %}
+      </div>
+
+      <div class="navigation">
+        {% comment %} <ul>
+          <li>
+            <a href="#">
+              <span class="fa fas fa-plus-square"></span>
+              <span>Create Playlist</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="fa fas fa-heart"></span>
+              <span>Liked Songs</span>
+            </a>
+          </li>
+        </ul> {% endcomment %}
+        <div class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category
+          </a>
+        
+          <ul class="dropdown-menu">
+            {% category_tag as song %}
+            {% for pd in song %}
+            <li><a class="dropdown-item" href="{% url "category" pd.id %}">{{pd.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="policies">
+        {% comment %} <ul>
+          <li>
+            <a href="#">Cookies</a>
+          </li>
+          <li>
+            <a href="#">Privacy</a>
+          </li>
+        </ul> {% endcomment %}
+      </div>
+    </div>
+
+
+
+    <div class="main-container">
+      <div class="topbar">
+        <div class="prev-next-buttons">
+
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{user.username}}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url "logout" %}">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      {% else %}
+        
+      <div class="navbar">
+          <a href="{% url "login" %}"><button type="button">Login</button></a>
+        </div>
+      </div>
+      {% endif %}
+     
+
+        {% block content %}
+
+        {% endblock %}
+
+      </body>
+      {% block js %}
+      
+      {% endblock %}
+  <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
+</html>

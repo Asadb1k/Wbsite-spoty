@@ -1,0 +1,126 @@
+.container {
+    display: flex;
+    margin-top: 50px;
+    height: 500px; /* Устанавливает высоту контейнера на 100% видимой области */
+  }
+
+
+.card{
+background-color: #777777;
+}
+
+
+.form-label {
+  margin-top: 8px;
+}
+
+.col-lg-6 {
+  width: 500px;
+  margin-left: 50px;
+}
+
+.aa {
+  border-radius: 3px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #777777;
+  padding: 7px;
+}
+
+.p-4 {
+  border: none;
+  background-color: #ffffff;
+}
+
+
+  .song-details {
+    height: 500px;
+    width: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .photo {
+    margin-right: 20px;
+  }
+
+.font{
+  color: #FFF;
+}
+p {
+  color: #FFF;
+}
+.form-label {
+  color: #777777;
+}
+  
+  .photo img {
+    height: auto;
+    border-radius: 5px;
+    width: 325px;
+  }
+  
+  .info {
+    flex: 1;
+  }
+
+.l {
+  padding-bottom: 80px;
+}
+
+  h2 {
+    margin: 0;
+    font-size: 50px;
+    color: #FFF;
+  }
+  
+  .author {
+    margin-top: 5px;
+    font-size: 40px;
+    color: #777;
+  }
+   
+
+.bat {
+  padding-bottom: 80px;
+}
+  
+  .play {
+    margin-top: 20px;
+  }
+
+button { 
+  font-weight: 600;
+  background-color: #121212;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 15px;
+  width: 100px;
+  height: 50px;
+}
+  
+  .play button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .play button:hover {
+    background-color: #555;
+  }

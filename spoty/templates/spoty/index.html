@@ -1,0 +1,96 @@
+{% extends "spoty/base.html" %}
+{% load static %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="spotify-playlists">
+  <h2>Spotify Playlists</h2>
+  <div class="list">
+      {% for song in songs %}
+      <div class="item">
+          <a href="{% url "song" song.id %}"><img src="{{ song.photo.url }}" /></a>
+          <div class="play">
+              <span class="fa fa-play" onclick="togglePlayPause(this, '{{ song.file.url }}')"></span>
+          </div>
+          <h4>{{ song.name }}</h4>
+          <p>{{ song.author }}</p>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+
+<div class="spotify-playlists">
+  <h2>Focus</h2>
+  <div class="list">
+    {% for song in songs %}
+    <div class="item">
+        <a href="{% url "song" song.id %}"><img src="{{ song.photo.url }}" /></a>
+        <div class="play">
+            <span class="fa fa-play" onclick="togglePlayPause(this, '{{ song.file.url }}')"></span>
+        </div>
+        <h4>{{ song.name }}</h4>
+        <p>{{ song.author }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="spotify-playlists">
+  <h2>Mood</h2>
+  <div class="list">
+    {% for song in songs %}
+    <div class="item">
+      <a href="{% url "song" song.id %}"><img src="{{ song.photo.url }}" /></a>
+      <div class="play">
+          <span class="fa fa-play" onclick="togglePlayPause(this, '{{ song.file.url }}')"></span>
+      </div>
+        <h4>{{ song.name }}</h4>
+        <p>{{ song.author }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <hr>
+</div>
+{% comment %} <div class="preview"> {% endcomment %}
+  {% comment %} <div class="text"> {% endcomment %}
+    {% comment %} <h6>Preview of Spotify</h6>
+    <p>Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.</p> {% endcomment %}
+  {% comment %} </div> {% endcomment %}
+  {% comment %} <div class="button"> {% endcomment %}
+    {% comment %} <button type="button">Sign up free</button> {% endcomment %}
+  {% comment %} </div> {% endcomment %}
+{% comment %} </div> {% endcomment %}
+{% endblock %}
+
+{% block js %}
+<script>
+  let currentAudio = null;
+
+  function togglePlayPause(element, audioUrl) {
+    if (currentAudio && currentAudio.src !== audioUrl) {
+      currentAudio.pause();
+      currentAudio = null;
+    }
+
+    if (!currentAudio) {
+      currentAudio = new Audio(audioUrl);
+      currentAudio.play();
+      element.classList.remove('fa-play');
+      element.classList.add('fa-pause');
+    } else {
+      if (currentAudio.paused) {
+        currentAudio.play();
+        element.classList.remove('fa-play');
+        element.classList.add('fa-pause');
+      } else {
+        currentAudio.pause();
+        element.classList.remove('fa-pause');
+        element.classList.add('fa-play');
+      }
+    }
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "spoty/base.html" %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+<div class="spotify-playlists">
+  <h2>Spotify Playlists</h2>
+  <div class="list">
+      {% for pd in sing %}
+      <div class="item">
+          <a href="{% url "song" pd.id %}"><img src="{{pd.photo.url}}" /></a>
+          <div class="play">
+              <span class="fa fa-play" onclick="togglePlayPause(this, '{{pd.file.url}}')"></span>
+          </div>
+          <h4>{{pd.name}}</h4>
+          <p>{{pd.author}}</p>
+      </div>
+      {% endfor %}
+        </div>
+      </div>
+
+      <div class="spotify-playlists">
+        <h2>Focus</h2>
+        <div class="list">
+          {% for pd in sing %}
+          <div class="item">
+              <a href="{% url "song" pd.id %}"><img src="{{pd.photo.url}}" /></a>
+              <div class="play">
+                  <span class="fa fa-play" onclick="togglePlayPause(this, '{{pd.file.url}}')"></span>
+              </div>
+              <h4>{{pd.name}}</h4>
+              <p>{{pd.author}}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="spotify-playlists">
+        <h2>Mood</h2>
+        <div class="list">
+          {% for pd in sing %}
+          <div class="item">
+              <a href="{% url "song" pd.id %}"><img src="{{pd.photo.url}}" /></a>
+              <div class="play">
+                  <span class="fa fa-play" onclick="togglePlayPause(this, '{{pd.file.url}}')"></span>
+              </div>
+              <h4>{{pd.name}}</h4>
+              <p>{{pd.author}}</p>
+          </div>
+          {% endfor %}
+        </div>
+
+        <hr>
+      </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script scr="{% static "js/scrips.js" %}"></script>
+{% endblock %}
+
+ 

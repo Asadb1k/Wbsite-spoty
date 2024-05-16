@@ -1,0 +1,172 @@
+{% extends "spoty/base.html" %}
+{% load static %}
+
+{% block css %}
+<link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet'>
+<link rel="stylesheet" type="text/css" href="{% static "css/scss.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="song-details">
+        <div class="photo">
+          <img src="{{ sing.photo.url }}" alt="Song Photo" />
+        </div>
+        <div class="info">
+          <div class="l">
+            <h2>{{ sing.name }}</h2>
+            <p class="author">{{ sing.author }}</p>
+          </div>
+        <div class="container-audio">
+            <audio controls  loop autoplay>
+                      <source src="{{sing.file.url}}" type="audio/ogg">
+                      Your browser dose not Support the audio Tag
+                  </audio>
+        </div>
+        <div class="container-audio">
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">  congratulations
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+            <div class="colum1">
+                <div class="row"></div>
+            </div>
+        </div>
+        </div>
+      </div>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+              <div class="card-body p-4">
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="text" id="addANote" name='comment' class="form-control" placeholder="Type comment..." />
+                  <input type="submit" value="yuborish">
+                </div>
+                {% for pd in tom %}
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <p>Comment : {{pd.comment}}</p>
+                    
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex flex-row align-items-center">
+                        {% comment %} <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
+                        height="25" /> {% endcomment %}
+                        <p class="small mb-0 ms-2">User : {{pd.username}}</p>
+                      </div>
+                      <div class="d-flex flex-row align-items-center">
+                        {% comment %} <p class="small text-muted mb-0">Upvote?</p> {% endcomment %}
+                        {% comment %} <i class="far fa-thumbs-up mx-2 fa-xs text-body" style="margin-top: -0.16rem;"></i> {% endcomment %}
+                        {% comment %} <p class="small text-muted mb-0">3</p> {% endcomment %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}        
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+</div>
+
+
+<div class="spotify-playlists">
+  <h2>Focus</h2>
+  <div class="list">
+    {% for song in songs %}
+    <div class="item">
+        <a href="{% url "song" song.id %}"><img src="{{ song.photo.url }}" /></a>
+        <div class="play">
+            <span class="fa fa-play" onclick="togglePlayPause(this, '{{ song.file.url }}')"></span>
+        </div>
+        <h4>{{ song.name }}</h4>
+        <p>{{ song.author }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="spotify-playlists">
+    <h2>Mood</h2>
+    <div class="list">
+      {% for song in songs %}
+      <div class="item">
+        <a href="{% url "song" song.id %}"><img src="{{ song.photo.url }}" /></a>
+        <div class="play">
+            <span class="fa fa-play" onclick="togglePlayPause(this, '{{ song.file.url }}')"></span>
+        </div>
+          <h4>{{ song.name }}</h4>
+          <p>{{ song.author }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+   
+
+{% endblock %}
+
